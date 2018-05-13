@@ -126,7 +126,6 @@ return 0;
 void game() //The Game Function
 {
 	intro();
-	printf("%s", name);
 }
 
 
