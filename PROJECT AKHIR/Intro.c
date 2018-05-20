@@ -17,8 +17,5 @@ void intro()
     	   	printf("%c", entername[i]);
     	    fflush(stdout); 
     	}
-	char name[10];
 	gets(name);
-	
-	printf("Tai Lo %s", name);
 }

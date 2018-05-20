@@ -44,7 +44,8 @@ int main()	//Main Function (Menu)
    	
 	   	case 3 :
 		 	end : //Untuk End (mungkin bakal kepake)
-			txt2("Thanks for trying this (shitty) game! see you later!");
+			txt2("Thanks for trying this (shitty) game! see you later!\n");
+			getch();
 			return 0;
 			break;
 		
@@ -111,7 +112,8 @@ void menu() //Main Menu Layout
 	printf("                            _      					\n");
 	printf("                           /_` . _ 					\n");
 	printf("                          ._/ / / /					\n");
-	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__	\n\n");
+	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__	\n");
+	printf("                       Hanif R & Reza P					\n\n");
 	
 	printf("                   [1] 'Play'   [2] Insctruction			\n");
 	printf("                           [3] Exit					\n");
