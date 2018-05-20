@@ -2,18 +2,23 @@
 #include <string.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 void game(), intro(), menu(), gameover(), win(), choice(), txt2(), txt(), error(), act1(), actA(), actB(), endA1(), endA2(), endB1(), endB2();
 
-int i, pilover;
-int branch[9];
-char name[10];
+int i;			//i : variable untuk For-Loop
+int pilover; 	//Pilover : integer yang dipakai pada ending untuk menentukan lanjut bermain atau kembali ke menu 
+int branch[9];	//Branch : Array berisi pilihan pemain seiring jalannya cerita
+int pil;		//Integer yang berisi pilihan pemain di main menu (1:Main 2:Instruksi 3:Keluar)
+char name[10];	//Name : Array yang menyimpan nama karakter setelah diinput di intro function
+
+
 
 int main()	//Main Function (Menu)
 {
+	SetConsoleTitle("Sin by Hanif R & Reza P");
  	system("color 4");
-	int pil;
-	
+
 	menu();		
 	
 	printf("\nYour Choice : ");
@@ -31,27 +36,26 @@ int main()	//Main Function (Menu)
 			menu();
 			
 			printf("\n");
-			txt("This game is a text based game that focus on narrative & nonlinear (Branching) story\n", 50000, 30000);
-			txt("You only need to use the input 1 or 2 to play the game\n", 50000, 30000);
-			txt("As the story progress, you'll face 2 options that you can choose, each with its own consequences'\n", 50000, 30000);
-			txt("Give attention to details in the Narration and choose the path you think are the best\n", 50000, 30000);
-			txt("Please turn the window into fullscreen for better aesthetic & immersion!\n\n", 50000, 30000);
-			txt("Input 1 if you want to play now! : ", 50000, 30000);	
+			txt2("This game is a text based game that focus on narrative & nonlinear (Branching) story\n");
+			txt2("You only need to use the input 1 or 2 to play the game\n");
+			txt2("As the story progress, you'll face 2 options that you can choose, each with its own \nconsequences'\n");
+			txt2("Give attention to details in the Narration \nand choose the path you think are the best\n");
+			txt2("Please turn the window into fullscreen for better aesthetic & immersion!\n\n");
+			txt2("Input 1 if you want to play now! : ");	
    			fflush(stdin);
    			pil = 0;
    			goto inputmenu;
    			break;
    	
 	   	case 3 :
-		 	end : //Untuk End (mungkin bakal kepake)
-			txt2("Thanks for trying this (shitty) game! see you later!\n");
+		 	txt2("Thanks for trying this (shitty) game! see you later!\n");
 			getch();
 			return 0;
 			break;
 		
-		default :
+		default : //Error Handling
 			menu();
-			error("inputmenu");
+			error("pil");
 			goto inputmenu;
 			break;				
 	}
@@ -108,18 +112,18 @@ void intro() // Intro & Name Input Function
 void menu() //Main Menu Layout
 {
 	system("cls");
-	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__	\n");
-	printf("                            _      					\n");
-	printf("                           /_` . _ 					\n");
-	printf("                          ._/ / / /					\n");
-	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__	\n");
-	printf("                       Hanif R & Reza P					\n\n");
+	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__\n");
+	printf("                            _      					 \n");
+	printf("                           /_` . _ 					 \n");
+	printf("                          ._/ / / /					 \n");
+	printf("         __.__.__.__.__.__.__.__.__.__.__.__.__.__.__\n");
+	printf("                       Hanif R & Reza P				 \n\n");
 	
-	printf("                   [1] 'Play'   [2] Insctruction			\n");
-	printf("                           [3] Exit					\n");
+	printf("                   [1] 'Play'   [2] Insctruction	 \n");
+	printf("                           [3] Exit					 \n");
 }
 
-void gameover()	//Gameover Function
+void gameover()	//Gameover Function (Bad Ending)
 {	
 	system("cls");
 	txt("...", 500000, 1);
@@ -154,7 +158,7 @@ void gameover()	//Gameover Function
 	}
 }
 
-void win()
+void win() //Win Function (Good Ending)
 {
 	system("cls");
 	printf("\n\n\n");
@@ -196,7 +200,7 @@ void win()
 	}
 }
 
-void choice(char pil1[],char pil2[], char consq1[], char consq2[], int x) //Choice Mechanism
+void choice(char pil1[],char pil2[], char consq1[], char consq2[], int x) //Choice Mechanism (Pil1 Pil2 : Deskripsi Pilihan; Consq1 Consq2: Konsekuensi pilihan; x: branch ke-
 {
 	fflush(stdin);
 	fflush(stdout);
@@ -233,10 +237,10 @@ void choice(char pil1[],char pil2[], char consq1[], char consq2[], int x) //Choi
 	}
 }
 
-void txt2(char text[]) //Running Text Player (For The Story), with fixed speed & Randomness (50000 & 30000)
+void txt2(char text[]) //Running Text Player (For The Story), with fixed speed & Randomness (20000 & 10000)
 {
 	for(i = 0; i < strlen(text); i++) {
-    	usleep(50000 + rand() % 30000);
+    	usleep(30000 + rand() % 10000);
     	printf("%c", text[i]);
     	fflush(stdout);
    	}   	
