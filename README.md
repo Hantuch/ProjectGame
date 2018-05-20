@@ -3,4 +3,4 @@ Gim
 
 
 
-Diese Welt wird kein leichter sein.
+Dieser Welt wird kein leichter sein.
